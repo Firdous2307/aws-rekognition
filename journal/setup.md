@@ -102,6 +102,13 @@ Make sure to provide the following code (replace your token in the file):
 }
 ```
 
+### TF Alias
+
+[/bin/set_tf_alias](./bin/set_tf_alias) automates the addition of a convenient alias for Terraform (tf) to the user's .bash_profile. 
+- The script first checks whether the alias already exists in the configuration file. If not, it appends the alias to the file, providing feedback on successful addition. 
+- The script is tailored for Bash users and optionally sources the .bash_profile for immediate availability of the alias. 
+
+
 #### Execution Considerations
 When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
 eg. `./bin/install_terraform_cli`
