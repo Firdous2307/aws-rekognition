@@ -11,6 +11,12 @@ We can check if our AWS credentials is configured correctly by running the follo
 aws sts get-caller-identity
 ```
 
+## Installing the Terraform CLI
+
+### Considerations with the Terraform CLI changes
+The Terraform CLI installation instructions have changed due to gpg keyring changes. So we needed refer to the latest install CLI instructions via Terraform Documentation and change the scripting for install.
+[Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
 ### Refactoring into Bash Scripts
 I decided to create a bash script to install the AWS CLI.
 
@@ -18,6 +24,17 @@ This bash script is located here: [./bin/install_aws_cli](./bin/install_aws_cli)
 - This will keep the Gitpod Task File ([.gitpod.yml](.gitpod.yml)) tidy.
 - This allow us an easier to debug and execute manually AWS CLI install
 - This will allow better portablity for other projects that need to install AWS CLI.
+
+While fixing the Terraform CLI gpg depreciation issues we notice that bash scripts steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
+
+This bash script is located here: [./bin/install_terraform_cli](./bin/install_terraform_cli)
+
+
+#### Execution Considerations
+When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
+eg. `./bin/install_terraform_cli`
+If we are using a script in **.gitpod.yml**  we need to point the script to a program to interpert it.
+eg. `source ./bin/install_terraform_cli`
 
 
 ### Working Env Vars
