@@ -1,6 +1,6 @@
 ### AWS CLI Installation
 
-
+AWS CLI is installed for the project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
 
 [Getting Started Install (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
@@ -10,6 +10,15 @@ We can check if our AWS credentials is configured correctly by running the follo
 ```sh
 aws sts get-caller-identity
 ```
+
+### Refactoring into Bash Scripts
+I decided to create a bash script to install the AWS CLI.
+
+This bash script is located here: [./bin/install_aws_cli](./bin/install_aws_cli)
+- This will keep the Gitpod Task File ([.gitpod.yml](.gitpod.yml)) tidy.
+- This allow us an easier to debug and execute manually AWS CLI install
+- This will allow better portablity for other projects that need to install AWS CLI.
+
 
 ### Working Env Vars
 
