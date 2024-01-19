@@ -1,4 +1,18 @@
 terraform {
+  #backend "remote" {
+  #  hostname = "app.terraform.io"
+  #  organization = "mohfird231"
+
+   # workspaces {
+    #  name = "rekognition-demo-01"
+    #}
+  #}
+  cloud {
+    organization = "mohfird231"
+    workspaces {
+      name = "rekognition-demo-01"
+    }
+  }
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -11,8 +25,9 @@ terraform {
   }
 }
 
-provider "aws" {
+provider "aws" { 
 }
+
 provider "random" {
   # Configuration options
 }
