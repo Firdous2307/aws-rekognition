@@ -7,13 +7,13 @@ terraform {
   #    name = "rekognition-demo-01"
   #  }
   #}
-  cloud {
-    organization = "mohfird231"
+  #cloud {
+  #  organization = "mohfird231"
 
-    workspaces {
-      name = "rekognition-demo-01"
-    }
-  }
+  #  workspaces {
+  #    name = "rekognition-demo-01"
+  #  }
+  #}
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -29,11 +29,6 @@ terraform {
 provider "aws" {
 }
 
-resource "aws_s3_bucket" "firdous-test-bucket" {
-  bucket = "awesome-tf-test-bucket"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+module "s3" {
+  source          = "./modules/s3"
 }
