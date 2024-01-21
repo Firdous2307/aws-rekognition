@@ -16,6 +16,9 @@ output "s3_bucket_versioning_enabled" {
   value = module.s3.s3_bucket_versioning_enabled
 }
 
+output "image_objects_keys" {
+  value = module.s3.image_objects_keys
+}
 /*
 output "lambda_function_arn" {
   value = module.lambda.lambda_function_arn
@@ -27,5 +30,23 @@ output "eventbridge_rule_arn" {
 
 output "cloudwatch_log_group_name" {
   value = module.cloudwatch.cloudwatch_log_group_name
+}
+
+
+output "vpc_id" {
+  value = module.vpc.vpc_id
+}
+
+output "ec2_instance_id" {
+  value = module.ec2.ec2_instance_id
+}
+
+
+output "ec2_role_name" {
+  value = module.iam.ec2_role_name
+}
+
+output "ecs_role_name" {
+  value = module.iam.ecs_role_name
 }
 */

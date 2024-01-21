@@ -13,6 +13,14 @@ resource "aws_s3_bucket_ownership_controls" "firdous-rekognition-image-bucket" {
   }
 }
 
+resource "aws_s3_object" "image_objects" {
+  for_each = fileset("${path.module}/images", "*.*")
+
+  bucket = aws_s3_bucket.my_bucket.bucket
+  key    = "uploads/${each.value}"
+  source = "${path.module}/images/${each.value}"
+}
+
 resource "aws_s3_bucket_acl" "firdous-rekognition-image-bucket" {
   depends_on = [aws_s3_bucket_ownership_controls.firdous-rekognition-image-bucket]
 
@@ -24,5 +32,5 @@ resource "aws_s3_bucket_versioning" "versioning_firdous-rekognition-image-bucket
   bucket = aws_s3_bucket.firdous-rekognition-image-bucket.id
   versioning_configuration {
     status = "Enabled"
-  }
+  }  
 }

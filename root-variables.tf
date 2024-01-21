@@ -19,3 +19,10 @@ variable "lambda_function_code" {
   default = "lambda_function_payload.zip" # Update with your Lambda function code file
 }
 */
+
+/*
+variable "latest_ami_id" {
+  type    = string
+  default = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+}
+*/

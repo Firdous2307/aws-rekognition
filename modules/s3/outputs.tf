@@ -13,3 +13,7 @@ output "s3_bucket_region" {
 output "s3_bucket_versioning_enabled" {
   value = aws_s3_bucket_versioning.versioning_firdous-rekognition-image-bucket.versioning_configuration.0.status
 }
+
+output "image_objects_keys" {
+  value = aws_s3_bucket_object.image_objects[*].key
+}
