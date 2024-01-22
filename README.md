@@ -14,7 +14,7 @@ draft planning
 - github actions?
 
 
-So I want to use the AWS Rekognition model that will be used to detect images of Ronaldo and Messi.
+So I want to use the AWS Rekognition model that will be used to detect images of Ronaldo and Messi(might change this lagter, allow me brainstorm, the idea is there. Just need what to focus it on)
 - Create a Dockerfile.
 -  A flask application.
 - Save my Docker Image to AWS ECR. 
