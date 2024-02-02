@@ -13,11 +13,12 @@ resource "aws_s3_bucket_ownership_controls" "firdous-rekognition-image-bucket" {
   }
 }
 
+
 resource "aws_s3_object" "image_objects" {
   for_each = fileset("${path.module}/test-images", "*.*")
 
   bucket = aws_s3_bucket.firdous-rekognition-image-bucket.bucket
-  key    = "uploads/${each.value}"
+  key    = "test-images/${each.value}"
   source = "${path.module}/test-images/${each.value}"
 }
 

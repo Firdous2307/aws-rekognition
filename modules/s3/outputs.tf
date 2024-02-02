@@ -15,5 +15,5 @@ output "s3_bucket_versioning_enabled" {
 }
 
 output "image_objects_keys" {
-  value = aws_s3_bucket_object.image_objects[*].key
+  value = aws_s3_object.image_objects.*.id
 }
