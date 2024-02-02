@@ -13,6 +13,8 @@ draft planning
 - aws polly?
 - github actions?
 
+- First off, I will try and implement the image/video upload using S3, Cloudwatch, EventBridge and AWS Lambda.
+
 
 So I want to use the AWS Rekognition model that will be used to detect images of Ronaldo and Messi(might change this lagter, allow me brainstorm, the idea is there. Just need what to focus it on).
 - Create a Dockerfile.
