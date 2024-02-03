@@ -13,13 +13,14 @@ resource "aws_s3_bucket_ownership_controls" "firdous-rekognition-image-bucket" {
   }
 }
 
+resource "aws_s3_object" "object" {
+  bucket = "firdous-rekognition-image-bucket"
 
-resource "aws_s3_object" "image_objects" {
-  for_each = fileset("${path.module}/test-images", "*.*")
+  for_each = fileset("/workspace/aws-rekognition-with-messi-or-ronaldo/test-images", "*")
 
-  bucket = aws_s3_bucket.firdous-rekognition-image-bucket.bucket
-  key    = "test-images/${each.value}"
-  source = "${path.module}/test-images/${each.value}"
+  key    = each.value
+  source = "/workspace/aws-rekognition-with-messi-or-ronaldo/test-images/${each.value}"
+  etag   = filemd5("/workspace/aws-rekognition-with-messi-or-ronaldo/test-images/${each.value}")
 }
 
 resource "aws_s3_bucket_acl" "firdous-rekognition-image-bucket" {

@@ -14,6 +14,6 @@ output "s3_bucket_versioning_enabled" {
   value = aws_s3_bucket_versioning.versioning_firdous-rekognition-image-bucket.versioning_configuration.0.status
 }
 
-output "image_objects_keys" {
-  value = aws_s3_object.image_objects.*.id
+output "s3_object_urls" {
+  value = [for obj_key, obj in aws_s3_object.object : obj.source]
 }

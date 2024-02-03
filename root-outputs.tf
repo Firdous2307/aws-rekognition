@@ -16,8 +16,9 @@ output "s3_bucket_versioning_enabled" {
   value = module.s3.s3_bucket_versioning_enabled
 }
 
-output "image_objects_keys" {
-  value = module.s3.image_objects_keys
+
+output "s3_object_urls" {
+  value = module.s3.s3_object_urls
 }
 /*
 output "lambda_function_arn" {
