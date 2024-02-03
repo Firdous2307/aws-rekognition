@@ -1,9 +1,9 @@
 variable "bucket_name" {
   type    = string
-  default = "your-s3-bucket-name"
+  default = "firdous-rekognition-image-bucket"
 }
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "us-east-2"
 }
