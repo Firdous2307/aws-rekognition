@@ -20,11 +20,11 @@ output "s3_bucket_versioning_enabled" {
 output "s3_object_urls" {
   value = module.s3.s3_object_urls
 }
-/*
 output "lambda_function_arn" {
   value = module.lambda.lambda_function_arn
 }
 
+/*
 output "eventbridge_rule_arn" {
   value = module.eventbridge.eventbridge_rule_arn
 }

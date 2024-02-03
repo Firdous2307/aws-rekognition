@@ -1,72 +1,62 @@
-# modules/lambda/main.tf
-/*
 provider "aws" {
   region = var.region
 }
 
-resource "aws_lambda_function" "this" {
-  function_name = var.lambda_function_name
-  handler       = "index.handler"
-  runtime       = "nodejs14.x"
-  filename      = var.lambda_function_code
-  source_code_hash = filebase64(var.lambda_function_code)
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    effect = "Allow"
 
-  role = aws_iam_role.lambda_exec.arn
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
 
-  environment = {
-    BUCKET_NAME = aws_s3_bucket.this.bucket
+    actions = ["sts:AssumeRole"]
   }
 }
 
-resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_exec_role"
-  
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      }
-    }
-  ]
-}
-POLICY
+resource "aws_iam_role" "iam_for_lambda" {
+  name               = "iam_for_lambda"
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
-resource "aws_iam_policy_attachment" "lambda_s3_attachment" {
-  policy_arn = aws_iam_policy.lambda_s3.arn
-  roles      = [aws_iam_role.lambda_exec.name]
+data "aws_iam_policy_document" "lambda_s3" {
+  statement {
+    effect = "Allow"
+
+    actions = ["s3:GetObject", "s3:PutObject"]
+
+    resources = [
+      "arn:aws:s3:::${var.bucket_name}/*"
+    ]
+  }
 }
 
 resource "aws_iam_policy" "lambda_s3" {
   name        = "lambda_s3_policy"
   description = "IAM policy for Lambda S3 access"
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
-      "Resource": [
-        "arn:aws:s3:::${var.bucket_name}/*"
-      ]
-    }
-  ]
-}
-POLICY
+  policy      = data.aws_iam_policy_document.lambda_s3.json
 }
 
-# Output configurations
-output "lambda_function_arn" {
-  value = aws_lambda_function.this.arn
+
+data "archive_file" "lambda" {
+  type        = "zip"
+  source_file = "/workspace/aws-rekognition-with-messi-or-ronaldo/lambda-function/lambda.js"
+  output_path = "lambda_function_payload.zip"
 }
-*/
+
+
+resource "aws_lambda_function" "test_lambda" {
+  filename          = var.lambda_function_code
+  function_name     = "lambda-demo-function"
+  role              = aws_iam_role.iam_for_lambda.arn
+  handler           = "index.handler"
+  source_code_hash = data.archive_file.lambda.output_base64sha256
+  runtime           = "nodejs18.x"
+  
+  environment {
+    variables = {
+      BUCKET_NAME = "firdous-rekognition-image-bucket"
+      }
+  }
+}              

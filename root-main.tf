@@ -35,6 +35,14 @@ module "s3" {
   region     = var.region
 }  
 
+module "lambda" {
+  source     = "./modules/lambda" 
+  lambda_function_name = var.lambda_function_name
+  lambda_function_code = var.lambda_function_code
+  region     = var.region
+
+}  
+
 
 /*
 module "vpc" {
