@@ -8,7 +8,6 @@ variable "bucket_name" {
   default = "firdous-rekognition-image-bucket" # Update with your desired S3 bucket name
 }
 
-/*
 variable "lambda_function_name" {
   type    = string
   default = "your-lambda-function-name" # Update with your desired Lambda function name
@@ -18,7 +17,7 @@ variable "lambda_function_code" {
   type    = string
   default = "lambda_function_payload.zip" # Update with your Lambda function code file
 }
-*/
+
 
 /*
 variable "latest_ami_id" {
