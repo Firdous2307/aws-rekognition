@@ -1,0 +1,23 @@
+name: Push to Main Workflow
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  push_to_main:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'closed' && github.event.issue.pull_request != null
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge changes to Main
+        run: |
+          git checkout main
+          git pull origin main
+          git merge --no-ff ${{ github.event.issue.pull_request.head.ref }}
+
+      - name: Push changes to Main
+        if: github.ref == 'refs/heads/main'  # Only push changes when on the main branch
+        run: git push origin main
