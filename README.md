@@ -27,3 +27,15 @@ So I want to use the AWS Rekognition model that will be used to detect images of
 Wow, so i have not writing code for a while, i will exaplain my reasons later, it is all part of burnouts, so when i spot one, i know what to do.
 
 I am watching Bundesliga Videos/Highlights and how they use AWS to get certain key match data, honestly that is amazing and it is on a larger scale of production, I am highly thinking of doing something similar but low scale, or just use photos to detect photos of football stars, I have a lot of ideas about this project.
+
+
+
+
+
+
+
+
+
+Started writing code again yesterday, i have been out for a while, so i am bit rusty but at least i got to finish up this project
+
+I added GitHub Actions workflow to ease the stress of manually creating a branch and also pushing it into the main branch(I am yet to test it but it should work)
