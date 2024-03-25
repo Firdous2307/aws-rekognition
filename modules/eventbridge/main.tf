@@ -1,3 +1,4 @@
+/*
 provider "aws" {
   region = var.region
 }
@@ -50,3 +51,4 @@ resource "aws_lambda_permission" "allow_s3_invoke_lambda" {
   principal     = "s3.amazonaws.com"
   source_arn    = aws_s3_bucket.firdous_rekognition_image_bucket.arn
 }
+*/
