@@ -43,7 +43,11 @@ module "lambda" {
 
 }  
 
-
+module "eventbridge" {
+  source = "./modules/eventbridge"
+  region = var.region
+  event_rule_name = var.event_rule_name
+}
 /*
 module "vpc" {
   source = "./modules/vpc"

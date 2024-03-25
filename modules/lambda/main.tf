@@ -39,6 +39,11 @@ resource "aws_iam_policy" "lambda_s3" {
 }
 
 
+# Define CloudWatch Logs group for Lambda function logs
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name = "/aws/lambda/${aws_lambda_function.test_lambda.function_name}"
+}
+
 data "archive_file" "lambda" {
   type        = "zip"
   source_file = "/workspace/aws-rekognition-with-messi-or-ronaldo/lambda-function/lambda.js"
