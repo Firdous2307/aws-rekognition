@@ -1,0 +1,28 @@
+name: Branch Creation Workflow
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Branch
+        run: |
+          # Extract issue information
+          issue_number=$(jq -r '.issue.number' $GITHUB_EVENT_PATH)
+          issue_title=$(jq -r '.issue.title' $GITHUB_EVENT_PATH)
+          
+          # Generate branch name
+          branch_name="issue-${issue_number}-${issue_title// /-}"
+          
+          # Create branch
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.REPO_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/git/refs \
+            -d '{
+                  "ref": "refs/heads/'"$branch_name"'",
+                  "sha": "${{ github.sha }}"
+                }'
