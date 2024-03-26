@@ -10,12 +10,12 @@ variable "bucket_name" {
 
 variable "lambda_function_name" {
   type    = string
-  default = "your-lambda-function-name" # Update with your desired Lambda function name
+  default = "lambda-demo-function" # Update with your desired Lambda function name
 }
 
 variable "lambda_function_code" {
   type    = string
-  default = "lambda_function_payload.zip" # Update with your Lambda function code file
+  default = "my_deployment_package.zip" # Update with your Lambda function code file
 }
 
 

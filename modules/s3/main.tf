@@ -13,6 +13,7 @@ resource "aws_s3_bucket_ownership_controls" "firdous-rekognition-image-bucket" {
   }
 }
 
+
 resource "aws_s3_object" "object" {
   bucket = "firdous-rekognition-image-bucket"
 

@@ -16,12 +16,12 @@ terraform {
   #}
   required_providers {
     random = {
-      source = "hashicorp/random"
-      version = "3.5.1"
+      source    = "hashicorp/random"
+      version   = "3.5.1"
     }
     aws = {
-      source = "hashicorp/aws"
-      version = "5.16.2"
+      source    = "hashicorp/aws"
+      version   = "5.16.2"
     }
   }
 }
@@ -30,23 +30,26 @@ provider "aws" {
 }
 
 module "s3" {
-  source     = "./modules/s3" 
-  bucket_name = var.bucket_name
-  region     = var.region
+  source        = "./modules/s3" 
+  bucket_name   = var.bucket_name
+  region        = var.region
 }  
 
 module "lambda" {
-  source     = "./modules/lambda" 
+  source               = "./modules/lambda" 
   lambda_function_name = var.lambda_function_name
   lambda_function_code = var.lambda_function_code
-  region     = var.region
+  region               = var.region
 
 }  
 
+
 module "eventbridge" {
-  source = "./modules/eventbridge"
-  region = var.region
-  event_rule_name = var.event_rule_name
+  source              = "./modules/eventbridge"
+  region              = var.region
+  s3_bucket_arn       = module.s3.s3_bucket_arn
+  lambda_function_arn = module.lambda.lambda_function_arn
+  event_rule_name     = var.event_rule_name
 }
 /*
 module "vpc" {

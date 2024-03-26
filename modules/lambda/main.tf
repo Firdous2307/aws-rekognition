@@ -20,11 +20,30 @@ resource "aws_iam_role" "iam_for_lambda" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
+resource "aws_iam_policy" "lambda_basic_execution_policy" {
+  name        = "LambdaBasicExecutionPolicy"
+  description = "Provides basic execution permissions for Lambda functions"
+  policy      = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
 data "aws_iam_policy_document" "lambda_s3" {
   statement {
     effect = "Allow"
 
-    actions = ["s3:GetObject", "s3:PutObject"]
+      actions = ["s3:GetObject", "s3:PutObject", "s3:ListBucket"]
 
     resources = [
       "arn:aws:s3:::${var.bucket_name}/*"
@@ -44,10 +63,15 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
   name = "/aws/lambda/${aws_lambda_function.test_lambda.function_name}"
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_s3_attachment" {
+  role       = aws_iam_role.iam_for_lambda.name
+  policy_arn = aws_iam_policy.lambda_s3.arn
+}
+
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "/workspace/aws-rekognition-with-messi-or-ronaldo/lambda-function/lambda.js"
-  output_path = "lambda_function_payload.zip"
+  source_dir  = "/workspace/aws-rekognition-with-messi-or-ronaldo/lambda-function"
+  output_path = "my_deployment_package.zip"
 }
 
 
