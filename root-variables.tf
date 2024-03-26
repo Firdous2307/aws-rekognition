@@ -18,6 +18,7 @@ variable "lambda_function_code" {
   default = "lambda_function_payload.zip" # Update with your Lambda function code file
 }
 
+
 variable "event_rule_name" {
   description = "The name of the EventBridge rule"
   type        = string

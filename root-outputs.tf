@@ -24,6 +24,7 @@ output "lambda_function_arn" {
   value = module.lambda.lambda_function_arn
 }
 
+
 output "event_rule_id" {
   description = "The ID of the EventBridge rule"
   value       = module.eventbridge.event_rule_id
