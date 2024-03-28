@@ -40,6 +40,7 @@ module "lambda" {
   lambda_function_name = var.lambda_function_name
   lambda_function_code = var.lambda_function_code
   region               = var.region
+  bucket_name          = module.s3.s3_bucket_name 
 
 }  
 
