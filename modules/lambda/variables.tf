@@ -10,7 +10,7 @@ variable "lambda_function_name" {
 
 variable "lambda_function_code" {
   type    = string
-  default = "lambda_function_payload.zip"
+  default = "deployment_package.zip"
 }
 
 variable "region" {

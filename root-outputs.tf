@@ -20,20 +20,23 @@ output "s3_bucket_versioning_enabled" {
 output "s3_object_urls" {
   value = module.s3.s3_object_urls
 }
+
 output "lambda_function_arn" {
   value = module.lambda.lambda_function_arn
 }
 
+
+output "event_rule_id" {
+  description = "The ID of the EventBridge rule"
+  value       = module.eventbridge.event_rule_id
+}
+
+output "event_rule_arn" {
+  description = "The ARN of the EventBridge rule"
+  value       = module.eventbridge.event_rule_arn
+}
+
 /*
-output "eventbridge_rule_arn" {
-  value = module.eventbridge.eventbridge_rule_arn
-}
-
-output "cloudwatch_log_group_name" {
-  value = module.cloudwatch.cloudwatch_log_group_name
-}
-
-
 output "vpc_id" {
   value = module.vpc.vpc_id
 }

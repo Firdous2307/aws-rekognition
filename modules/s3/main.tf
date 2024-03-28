@@ -2,6 +2,7 @@ provider "aws" {
   region = var.region
 }
 
+
 resource "aws_s3_bucket" "firdous-rekognition-image-bucket" {
   bucket = var.bucket_name
 }
@@ -13,6 +14,13 @@ resource "aws_s3_bucket_ownership_controls" "firdous-rekognition-image-bucket" {
   }
 }
 
+
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  bucket = aws_s3_bucket.firdous-rekognition-image-bucket.id
+  eventbridge = true
+}
+
+
 resource "aws_s3_object" "object" {
   bucket = "firdous-rekognition-image-bucket"
 
@@ -21,6 +29,7 @@ resource "aws_s3_object" "object" {
   key    = each.value
   source = "/workspace/aws-rekognition-with-messi-or-ronaldo/test-images/${each.value}"
   etag   = filemd5("/workspace/aws-rekognition-with-messi-or-ronaldo/test-images/${each.value}")
+  depends_on = [aws_s3_bucket.firdous-rekognition-image-bucket]
 }
 
 resource "aws_s3_bucket_acl" "firdous-rekognition-image-bucket" {
