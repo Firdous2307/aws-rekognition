@@ -30,20 +30,18 @@ provider "aws" {
 }
 
 module "s3" {
-  source        = "./modules/s3" 
-  bucket_name   = var.bucket_name
-  region        = var.region
-}  
+  source       = "./modules/s3"
+  bucket_name  = var.bucket_name
+  region       = var.region
+}
 
 module "lambda" {
-  source               = "./modules/lambda" 
+  source               = "./modules/lambda"
   lambda_function_name = var.lambda_function_name
   lambda_function_code = var.lambda_function_code
   region               = var.region
-  bucket_name          = module.s3.s3_bucket_name 
-
-}  
-
+  bucket_name          = module.s3.s3_bucket_name
+}
 
 module "eventbridge" {
   source              = "./modules/eventbridge"
@@ -52,11 +50,15 @@ module "eventbridge" {
   lambda_function_arn = module.lambda.lambda_function_arn
   event_rule_name     = var.event_rule_name
 }
-/*
+
 module "vpc" {
-  source = "./modules/vpc"
+  source              = "./modules/vpc"
+  subnet_cidr_block   = var.subnet_cidr_block
+  subnet_name         = var.subnet_name
+  availability_zone   = var.availability_zone
 }
 
+/*
 module "iam" {
   source = "./modules/iam"
 }

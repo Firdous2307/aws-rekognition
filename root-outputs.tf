@@ -36,11 +36,11 @@ output "event_rule_arn" {
   value       = module.eventbridge.event_rule_arn
 }
 
-/*
+
 output "vpc_id" {
   value = module.vpc.vpc_id
 }
-
+/*
 output "ec2_instance_id" {
   value = module.ec2.ec2_instance_id
 }
