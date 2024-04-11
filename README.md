@@ -39,3 +39,13 @@ I am watching Bundesliga Videos/Highlights and how they use AWS to get certain k
 Started writing code again yesterday, i have been out for a while, so i am bit rusty but at least i got to finish up this project
 
 I added GitHub Actions workflow to ease the stress of manually creating a branch and also pushing it into the main branch(I am yet to test it but it should work)
+
+
+
+
+
+
+
+Okay so this is my first time creating a Rekognition Custom Labels project, so Amazon Rekognition requires an S3 bucket to store my project files.
+
+This will be done via the console, also i tried searching for terraform modules for aws-rekognition but to no avail, hmm I wonder why this is the case 
