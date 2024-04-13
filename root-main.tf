@@ -7,13 +7,13 @@ terraform {
   #    name = "rekognition-demo-01"
   #  }
   #}
-  #cloud {
-  #  organization = "mohfird231"
+  cloud {
+    organization = "mohfird231"
 
-  #  workspaces {
-  #    name = "rekognition-demo-01"
-  #  }
-  #}
+    workspaces {
+      name = "rekognition-project-01"
+    }
+  }
   required_providers {
     random = {
       source    = "hashicorp/random"
