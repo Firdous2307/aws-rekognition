@@ -1,54 +1,89 @@
 variable "region" {
-  type    = string
-  default = "us-east-2"
+  description = "The AWS region"
+  type        = string
 }
 
 variable "bucket_name" {
-  type    = string
-  default = "firdous-rekognition-image-bucket"
+  description = "The name of the S3 bucket"
+  type        = string
 }
 
 variable "lambda_function_name" {
-  type    = string
-  default = "demo-function"
+  description = "The name of the Lambda function"
+  type        = string
 }
 
 variable "lambda_function_code" {
-  type    = string
-  default = "deployment_package.zip"
+  description = "The file path of the Lambda function code ZIP archive"
+  type        = string
 }
 
 variable "event_rule_name" {
   description = "The name of the EventBridge rule"
   type        = string
-  default     = "S3_Event_Rule"
 }
 
 variable "vpc_cidr_block" {
   description = "The CIDR block for the VPC"
   type        = string
-  default     = "10.0.0.0/24"
 }
 
 variable "vpc_name" {
   description = "The name of the VPC"
   type        = string
-  default     = "rekognition-vpc"  
-}  
+}
+
 variable "subnet_cidr_block" {
   description = "The CIDR block for the subnet"
   type        = string
-  default     = "10.0.0.0/26"
 }
 
 variable "subnet_name" {
   description = "The name of the subnet"
   type        = string
-  default     = "demo-subnet"
 }
 
 variable "availability_zone" {
   description = "The name of the Availability Zone"
   type        = string
-  default     = "us-east-2a"
+}
+
+variable "ec2_role_name" {
+  type    = string
+}
+
+variable "ec2_role_assume_role_policy" {
+  type    = string
+}
+
+variable "ec2_role_managed_policy_arns" {
+  type    = list(string)
+}
+
+variable "ec2_role_policies" {
+  type    = list(string)
+}
+
+variable "ec2_instance_profile_name" {
+  type    = string
+}
+
+variable "latest_ami_id" {
+  description = "The latest AMI ID for EC2 instances"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "The type of EC2 instance"
+  type        = string
+}
+
+variable "ec2_instance_name" {
+  description = "The name of the EC2 instance"
+  type        = string
+}
+
+variable "ec2_user_data" {
+  description = "The user data for the EC2 instance"
+  type        = string
 }
