@@ -1,5 +1,3 @@
-# root-outputs.tf
-
 output "s3_bucket_name" {
   value = module.s3.s3_bucket_name
 }
@@ -36,21 +34,22 @@ output "event_rule_arn" {
   value       = module.eventbridge.event_rule_arn
 }
 
-/*
+
 output "vpc_id" {
   value = module.vpc.vpc_id
 }
-
-output "ec2_instance_id" {
-  value = module.ec2.ec2_instance_id
+output "ec2_role_arn" {
+  value = module.iam.ec2_role_arn
 }
 
-
-output "ec2_role_name" {
-  value = module.iam.ec2_role_name
+output "ec2_instance_profile_arn" {
+  value = module.iam.ec2_instance_profile_arn
 }
 
-output "ecs_role_name" {
-  value = module.iam.ecs_role_name
+output "repository_url" {
+  value = module.ecr.repository_url
 }
-*/
+#output "ecs_role_name" {
+#  value = module.iam.ecs_role_name
+#}
+

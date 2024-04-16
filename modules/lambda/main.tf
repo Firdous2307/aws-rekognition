@@ -69,7 +69,7 @@ resource "aws_iam_role_policy_attachment" "lambda_s3_attachment" {
 
 # Define CloudWatch Logs group for Lambda function logs
 resource "aws_cloudwatch_log_group" "lambda_log_group" {
-  name = "/aws/lambda/${aws_lambda_function.test_lambda.function_name}"
+  name = "/aws/${aws_lambda_function.test_lambda.function_name}"
 }
 
 data "archive_file" "lambda" {
