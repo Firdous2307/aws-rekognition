@@ -46,6 +46,9 @@ output "ec2_instance_profile_arn" {
   value = module.iam.ec2_instance_profile_arn
 }
 
+output "repository_url" {
+  value = module.ecr.repository_url
+}
 #output "ecs_role_name" {
 #  value = module.iam.ecs_role_name
 #}

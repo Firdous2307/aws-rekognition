@@ -87,3 +87,8 @@ variable "ec2_user_data" {
   description = "The user data for the EC2 instance"
   type        = string
 }
+
+variable "repository_name" {
+  description = "The name of the ECR repository"
+  type        = string
+}

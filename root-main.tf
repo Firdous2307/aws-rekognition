@@ -4,16 +4,16 @@ terraform {
   #  organization = "mohfird231"
 
   #  workspaces {
-  #    name = "rekognition-demo-01"
+  #    name = "rekognition-project-01""
   #  }
   #}
-  cloud {
-    organization = "mohfird231"
+  #cloud {
+  #  organization = "mohfird231"
 
-    workspaces {
-      name = "rekognition-project-01"
-    }
-  }
+  #  workspaces {
+  #    name = "rekognition-project-01"
+  #  }
+  #}
   required_providers {
     random = {
       source    = "hashicorp/random"
@@ -76,4 +76,10 @@ module "ec2" {
   ec2_instance_name = var.ec2_instance_name
   ec2_user_data     = var.ec2_user_data
   
+}
+
+module "ecr" {
+  source            = "./modules/ecr"  
+  region            = var.region 
+  repository_name   = var.repository_name  
 }
