@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run AWS ECR login script
+      - name: Login to Amazon ECR
         run: |
-          ./bin/ecr_login
-      - name: Run Docker build and push script
-        run:  |
-          ./bin/docker/build_push
-
-#testing again, this directory issue is troubling          
+          aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t athlete-rekognition .
+          docker tag athlete-rekognition:latest $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/rekognition-repo:latest
+          docker push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/rekognition-repo:latest
