@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Run AWS ECR login script
         run: 
-          ./bin/login/ecr
+          ./bin/ecr_login
       - name: Run Docker build and push script
         run:
           ./bin/docker_build_push
