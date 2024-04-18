@@ -13,6 +13,6 @@ jobs:
           ./bin/ecr_login
       - name: Run Docker build and push script
         run:  |
-          ./bin/docker_build_push
+          ./bin/docker/build_push
 
 #testing again, this directory issue is troubling          
