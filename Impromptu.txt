@@ -1,0 +1,5 @@
+So I really do not know the current issue, as i tried to login into ECR with my AWS Credentials, it worked.
+Also, I was able to build,tag and push my image to my repository in ECR while being interactive with the Shell.
+
+I have had close to 6-7 failed runs now, I will still keep trying but first off, I am thinking of creating a new branch after this one to keep it clean, then delete the branch afterwards. That is if the next job fails.
+
