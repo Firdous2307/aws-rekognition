@@ -4,7 +4,7 @@
 docker build -t athlete-rekognition .
 
 # Tag the Docker image
-docker tag athlete-rekognition:latest $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/rekognition-repo:latest
+docker tag athlete-rekognition:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/rekognition-repo:latest
 
 # Push the Docker image to Amazon ECR
-docker push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/rekognition-repo:latest
+docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/rekognition-repo:latest
