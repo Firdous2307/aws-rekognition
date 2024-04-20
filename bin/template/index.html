@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image to Test Football Player Recognition Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        p, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .result-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .result-container h1 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Image to Test Football Player Recognition Model</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% endif %}
+    {% if prediction %}
+        <div class="result-container">
+            <h1>Result (Messi or Ronaldo)</h1>
+            {% if labels|length == 0 %}
+                <h2>No labels found for the uploaded image</h2>
+            {% endif %}
+            <ul>
+                {% for label in labels %}
+                    <li>{{ label.Name }} - {{ label.Confidence }} %</li>
+                {% endfor %}
+            </ul>
+            <p>Football Player: {% if labels|length > 0 %}{{ labels[0].Name }}{% else %}Unknown{% endif %}</p>
+            <p>Confidence: {% if labels|length > 0 %}{{ labels[0].Confidence }}{% else %}N/A{% endif %} %</p>
+            <img src="{{ image_url }}" alt="Uploaded Image" style="max-width: 100%; margin-top: 20px;">
+        </div>
+    {% endif %}
+</body>
+</html>

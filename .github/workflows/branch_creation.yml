@@ -14,8 +14,8 @@ jobs:
           issue_number=$(jq -r '.issue.number' $GITHUB_EVENT_PATH)
           issue_title=$(jq -r '.issue.title' $GITHUB_EVENT_PATH)
           
-          # Generate branch name
-          branch_name="issue-${issue_number}-${issue_title// /-}"
+          # Generate branch name without "issue-" prefix
+          branch_name="${issue_number}-${issue_title// /-}"
           
           # Create branch
           curl -X POST \
