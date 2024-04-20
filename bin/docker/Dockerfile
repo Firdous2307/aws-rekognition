@@ -6,7 +6,6 @@ WORKDIR /app
 
 COPY template /app/template
 
-
 COPY Dockerfile /app
 
 COPY requirements.txt /app
