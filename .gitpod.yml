@@ -8,9 +8,9 @@ tasks:
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
-     source ./bin/aws-use/login_ecr
+     source ./bin/aws-files/login_ecr
      source ./bin/terraform/set_tf_alias
-     source ./bin/aws-use/install_aws_cli
+     source ./bin/aws-files/install_aws_cli
 
 vscode:
   extensions:  
