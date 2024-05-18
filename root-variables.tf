@@ -88,7 +88,12 @@ variable "ec2_user_data" {
   type        = string
 }
 
-variable "repository_name" {
-  description = "The name of the ECR repository"
+variable "account_id" {
+  description = "AWS account ID"
+  type        = string
+}
+
+variable "repo_name" {
+  description = "ECR repository name"
   type        = string
 }

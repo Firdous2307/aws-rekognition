@@ -21,7 +21,7 @@ terraform {
     }
     aws = {
       source    = "hashicorp/aws"
-      version   = "5.16.2"
+      version = "5.50.0"
     }
   }
 }
@@ -81,5 +81,5 @@ module "ec2" {
 module "ecr" {
   source            = "./modules/ecr"  
   region            = var.region 
-  repository_name   = var.repository_name  
+  repository_name   = var.repo_name  
 }
