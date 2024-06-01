@@ -53,6 +53,9 @@ module "eventbridge" {
 
 module "vpc" {
   source              = "./modules/vpc"
+  vpc_id              = var.vpc_id
+  vpc_cidr_block      = var.vpc_cidr_block
+  vpc_name            = var.vpc_name
   subnet_cidr_block   = var.subnet_cidr_block
   subnet_name         = var.subnet_name
   availability_zone   = var.availability_zone
@@ -70,13 +73,14 @@ module "iam" {
 
 module "ec2" {
   source            = "./modules/ec2"
+  vpc_id              = var.vpc_id
+  subnet_cidr_block   = var.subnet_cidr_block
   subnet_name       = var.subnet_name
   latest_ami_id     = var.latest_ami_id
   instance_type     = var.instance_type
   ec2_instance_name = var.ec2_instance_name
   ec2_user_data     = var.ec2_user_data
-  
-}
+  }
 
 module "ecr" {
   source            = "./modules/ecr"  

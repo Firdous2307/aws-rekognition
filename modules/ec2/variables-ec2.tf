@@ -27,3 +27,8 @@ variable "subnet_name" {
   description = "Name of the Subnet"
   type        = string    
 }
+
+variable "vpc_id" {
+  description = "ID of the existing VPC"
+  type        = string
+}
