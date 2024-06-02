@@ -18,36 +18,45 @@ declare -A modules=(
 )
 
 # Function to comment out module blocks in the root configuration file
+# Function to comment out specific module blocks in the root configuration file
 comment_root_modules() {
   root_file="root-main.tf"
   if [[ -f $root_file ]]; then
     echo "File exists: $root_file"
-    for module in "${root_modules[@]}"; do
-      echo "Commenting out module: $module in $root_file"
-      sed -i "/module \"$module\" {/,/}/ s/^/#/" "$root_file"
-    done
+    # Comment out specific services
+    sed -i '/module "s3" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "lambda" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "eventbridge" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "vpc" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "iam" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "ec2" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "ecr" {/,/}/ s/^/#/' "$root_file"
   else
     echo "Root file not found: $root_file"
   fi
 }
 
+
 # Function to comment out entire file content using block comments
 comment_entire_file() {
+  files=("root-output.tf")  # Add root-output.tf to the list of files
   for module in "${!modules[@]}"; do
     echo "Processing module: $module"
     dir=${modules[$module]}
-    files=("modules/$dir/main-$module.tf" "modules/$dir/output-$module.tf" "modules/$dir/variables-$module.tf")
-    for file in "${files[@]}"; do
-      echo "Processing file: $file"
-      if [[ -f $file ]]; then
-        echo "File exists: $file"
-        # Add block comments at the beginning and end of the file
-        sed -i '1s/^/\/\*\n/' "$file"
-        echo '*/' >> "$file"
-      else
-        echo "File not found: $file"
-      fi
-    done
+    module_files=("modules/$dir/main-$module.tf" "modules/$dir/output-$module.tf" "modules/$dir/variables-$module.tf")
+    files+=("${module_files[@]}")
+  done
+
+  for file in "${files[@]}"; do
+    echo "Processing file: $file"
+    if [[ -f $file ]]; then
+      echo "File exists: $file"
+      # Add block comments at the beginning and end of the file
+      sed -i '1s/^/\/\*\n/' "$file"
+      echo '*/' >> "$file"
+    else
+      echo "File not found: $file"
+    fi
   done
 }
 

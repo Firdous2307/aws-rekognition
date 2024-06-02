@@ -32,21 +32,24 @@ uncomment_root_modules() {
 
 # Function to uncomment entire file content by removing block comments
 uncomment_entire_file() {
+  files=("root-output.tf") # Add root-output.tf to the list of files
   for module in "${!modules[@]}"; do
     echo "Processing module: $module"
     dir=${modules[$module]}
-    files=("modules/$dir/main-$module.tf" "modules/$dir/output-$module.tf" "modules/$dir/variables-$module.tf")
-    for file in "${files[@]}"; do
-      echo "Processing file: $file"
-      if [[ -f $file ]]; then
-        echo "File exists: $file"
-        # Remove block comments from the beginning and end of the file
-        sed -i 's/\/\*//' "$file"
-        sed -i 's/\*\///' "$file"
-      else
-        echo "File not found: $file"
-      fi
-    done
+    module_files=("modules/$dir/main-$module.tf" "modules/$dir/output-$module.tf" "modules/$dir/variables-$module.tf")
+    files+=("${module_files[@]}")
+  done
+
+  for file in "${files[@]}"; do
+    echo "Processing file: $file"
+    if [[ -f $file ]]; then
+      echo "File exists: $file"
+      # Remove block comments from the beginning and end of the file
+      sed -i 's/\/\*//' "$file"
+      sed -i 's/\*\///' "$file"
+    else
+      echo "File not found: $file"
+    fi
   done
 }
 
