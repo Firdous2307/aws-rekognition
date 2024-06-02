@@ -1,3 +1,5 @@
+/*
+
 provider "aws" {
   region = var.region
 }
@@ -51,7 +53,7 @@ data "aws_iam_policy_document" "lambda_s3" {
     actions = ["s3:GetObject", "s3:PutObject", "s3:ListBucket"]
 
     resources = [
-      "arn:aws:s3:::${var.bucket_name}/*"
+      "arn:aws:s3:::${var.bucket_name}"
     ]
   }
 }
@@ -92,3 +94,5 @@ resource "aws_lambda_function" "test_lambda" {
     }
   }
 }
+
+*/

@@ -1,3 +1,5 @@
+/*
+
 provider "aws" {
   region = "us-east-2"
 }
@@ -30,3 +32,5 @@ resource "aws_ecr_lifecycle_policy" "private_repo_policy" {
 }
 EOF
 }
+
+*/

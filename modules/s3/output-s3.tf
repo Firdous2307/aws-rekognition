@@ -1,3 +1,5 @@
+/*
+
 
 output "s3_bucket_name" {
   value = aws_s3_bucket.firdous-rekognition-image-bucket.bucket
@@ -19,3 +21,5 @@ output "s3_object_urls" {
   value = [for obj_key, obj in aws_s3_object.object : obj.source]
 }
 
+
+*/

@@ -1,3 +1,5 @@
+/*
+
 variable "region" {
   type    = string
   default = "us-east-2"
@@ -19,3 +21,5 @@ variable "event_rule_name" {
   type        = string
   default     = "s3_event_rule"
 }
+
+*/

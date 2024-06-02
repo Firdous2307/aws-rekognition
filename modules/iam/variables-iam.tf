@@ -1,3 +1,5 @@
+/*
+
 variable "region" {
   type    = string
   default = "us-east-2"
@@ -22,3 +24,5 @@ variable "ec2_role_policies" {
 variable "ec2_instance_profile_name" {
   type    = string
 }
+
+*/
