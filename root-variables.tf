@@ -102,3 +102,27 @@ variable "repo_name" {
   description = "ECR repository name"
   type        = string
 }
+variable "image_url" {
+  description = "The Image Url of the Docker Image"
+  type        = string
+}
+variable "aws_ecs_cluster" {
+  description = "Name of ECS Cluster"
+  type        = string 
+}
+
+variable "ecs_role_name" {
+  description = "Name of ECS Role"
+  type        = string 
+}
+variable "ecs_role_policies" {
+  description = "Name of ECS Policies"
+  type        = string  
+}
+variable "ecs_policy_arn" {
+  type = string
+}
+
+variable "ecs_execution_role" {
+  type = string
+}

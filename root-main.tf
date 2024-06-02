@@ -62,14 +62,18 @@ provider "aws" {
 #}
 
 
-#module "iam" {
-#  source                        = "./modules/iam"
-#  ec2_role_name                 = var.ec2_role_name
-#  ec2_role_assume_role_policy     = var.ec2_role_assume_role_policy
-#  ec2_role_managed_policy_arns    = var.ec2_role_managed_policy_arns
-#  ec2_role_policies               = var.ec2_role_policies
-#  ec2_instance_profile_name       = var.ec2_instance_profile_name
-#}
+module "iam" {
+  source                          = "./modules/iam"
+  ecs_role_name                   = var.ecs_role_name
+  ecs_role_policies               = var.ecs_role_policies
+  ecs_policy_arn                  = var.ecs_policy_arn     
+  ec2_role_name                   = var.ec2_role_name
+  ec2_role_assume_role_policy     = var.ec2_role_assume_role_policy
+  ec2_role_managed_policy_arns    = var.ec2_role_managed_policy_arns
+  ec2_role_policies               = var.ec2_role_policies
+  ec2_instance_profile_name       = var.ec2_instance_profile_name
+  
+}
 
 #module "ec2" {
 #  source            = "./modules/ec2"
@@ -89,7 +93,11 @@ provider "aws" {
 #}
 
 module "ecs" {
-  source            = "./modules/ecs"
-  region            = var.region
-  
+  source              = "./modules/ecs"
+  bucket_name         = var.bucket_name
+  ecs_execution_role  = var.ecs_execution_role
+  ecs_policy_arn      = var.ecs_policy_arn   
+  aws_ecs_cluster     = var.aws_ecs_cluster 
+  region              = var.region
+  image_url           = var.image_url 
 }

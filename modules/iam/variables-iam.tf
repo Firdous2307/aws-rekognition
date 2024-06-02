@@ -1,4 +1,3 @@
-/*
 
 variable "region" {
   type    = string
@@ -25,4 +24,14 @@ variable "ec2_instance_profile_name" {
   type    = string
 }
 
-*/
+variable "ecs_role_name" {
+  type = string
+}
+
+variable "ecs_role_policies" {
+  type = string
+  
+}
+variable "ecs_policy_arn" {
+  type = string
+}
