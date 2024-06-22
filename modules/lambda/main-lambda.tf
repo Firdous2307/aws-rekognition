@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 provider "aws" {
   region = var.region
 }
@@ -94,5 +98,9 @@ resource "aws_lambda_function" "test_lambda" {
     }
   }
 }
+
+
+
+
 
 */

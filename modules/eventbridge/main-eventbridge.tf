@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 provider "aws" {
   region = var.region
 }
@@ -40,5 +44,9 @@ resource "aws_lambda_permission" "allow_s3_invoke_lambda" {
   principal     = "s3.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.s3_event_rule.arn
 }
+
+
+
+
 
 */

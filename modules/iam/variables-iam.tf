@@ -1,4 +1,6 @@
 
+
+
 variable "region" {
   type    = string
   default = "us-east-2"
@@ -34,4 +36,17 @@ variable "ecs_role_policies" {
 }
 variable "ecs_policy_arn" {
   type = string
+}
+
+variable "ecs_execution_role" {
+  description = "ECS execution role"
+  type        = object({
+    name = string
+    arn  = string
+  })
+}
+
+variable "ecs_execution_role_arn" {
+  description = "ARN of the ECS execution role"
+  type        = string
 }

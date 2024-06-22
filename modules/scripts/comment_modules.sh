@@ -14,7 +14,6 @@ declare -A modules=(
   ["lambda"]="lambda"
   ["ecr"]="ecr"
   ["vpc"]="vpc"
-  ["iam"]="iam"
 )
 
 # Function to comment out module blocks in the root configuration file
@@ -28,7 +27,6 @@ comment_root_modules() {
     sed -i '/module "lambda" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "eventbridge" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "vpc" {/,/}/ s/^/#/' "$root_file"
-    sed -i '/module "iam" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "ec2" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "ecr" {/,/}/ s/^/#/' "$root_file"
   else

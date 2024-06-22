@@ -1,4 +1,6 @@
 
+
+
 output "ec2_role_arn" {
   value = aws_iam_role.ec2_role.arn
 }
@@ -12,5 +14,10 @@ output "ec2_instance_id" {
 }
 
 output "ecs_role_name" {
-  value = aws_iam_role.ecs_execution_role
+  value = var.ecs_execution_role
+}
+
+output "ecs_execution_role" {
+  description = "ECS execution role"
+  value       = var.ecs_execution_role
 }

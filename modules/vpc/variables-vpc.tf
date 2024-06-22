@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 variable "region" {
   type    = string
   default = "us-east-2"
@@ -36,5 +40,9 @@ variable "vpc_id" {
   description = "ID of the existing VPC"
   type        = string
 }
+
+
+
+
 
 */

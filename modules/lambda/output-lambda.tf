@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 output "lambda_function_arn" {
   value = aws_lambda_function.test_lambda.arn
 }
@@ -19,5 +23,9 @@ output "lambda_function_handler" {
 output "lambda_function_source_code_hash" {
   value = aws_lambda_function.test_lambda.source_code_hash
 }
+
+
+
+
 
 */

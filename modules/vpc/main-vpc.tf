@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 provider "aws" {
   region = var.region
 }
@@ -23,5 +27,9 @@ resource "aws_subnet" "public" {
     Name = var.subnet_name
   }
 }
+
+
+
+
 
 */

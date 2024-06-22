@@ -22,3 +22,7 @@ variable "ecs_execution_role" {
 variable "ecs_policy_arn" {
   type    = string
 }
+
+variable "ecs_execution_role_arn" {
+  type = string
+}

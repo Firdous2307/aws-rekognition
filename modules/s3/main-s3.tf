@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 provider "aws" {
   region = var.region
 }
@@ -47,4 +51,8 @@ resource "aws_s3_bucket_versioning" "versioning_firdous-rekognition-image-bucket
     status = "Enabled"
   }  
 }
+
+
+
+
 */

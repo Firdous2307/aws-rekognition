@@ -1,5 +1,9 @@
 /*
 
+
+
+
+
 provider "aws" {
   region = var.region
 }
@@ -31,5 +35,9 @@ resource "aws_network_interface_attachment" "test" {
   network_interface_id = data.aws_subnet.existing_subnet.id
   device_index         = 0
 }
+
+
+
+
 
 */
