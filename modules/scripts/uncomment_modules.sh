@@ -13,6 +13,7 @@ declare -A modules=(
   ["lambda"]="lambda"
   ["ecr"]="ecr"
   ["vpc"]="vpc"
+  ["iam"]="iam"
 )
 
 # Function to uncomment module blocks in the root configuration file

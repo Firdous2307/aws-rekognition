@@ -27,6 +27,7 @@ comment_root_modules() {
     sed -i '/module "lambda" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "eventbridge" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "vpc" {/,/}/ s/^/#/' "$root_file"
+    sed -i '/module "iam" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "ec2" {/,/}/ s/^/#/' "$root_file"
     sed -i '/module "ecr" {/,/}/ s/^/#/' "$root_file"
   else
