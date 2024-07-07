@@ -1,4 +1,4 @@
-/*
+
 
 
 
@@ -80,8 +80,8 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir  = "/workspace/aws-rekognition-with-messi-or-ronaldo/lambda-function"
-  output_path = "deployment_package.zip"
+  source_dir  = "${path.module}/lambda-function"
+  output_path = "${path.module}/deployment_package.zip"
 }
 
 resource "aws_lambda_function" "test_lambda" {
@@ -103,4 +103,4 @@ resource "aws_lambda_function" "test_lambda" {
 
 
 
-*/
+

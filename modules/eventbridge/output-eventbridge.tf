@@ -1,4 +1,4 @@
-/*
+
 
 
 
@@ -18,4 +18,4 @@ output "event_rule_arn" {
 
 
 
-*/
+

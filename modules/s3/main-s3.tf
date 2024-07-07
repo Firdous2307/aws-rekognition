@@ -1,4 +1,4 @@
-/*
+
 
 
 
@@ -55,4 +55,4 @@ resource "aws_s3_bucket_versioning" "versioning_firdous-rekognition-image-bucket
 
 
 
-*/
+
