@@ -1,4 +1,4 @@
-# Automate Image Upload to S3 with Lambda, EventBridge, and CloudWatch
+# Automate Image Upload to S3 with Lambda, and EventBridge
 
 ## Introduction
 
@@ -98,7 +98,22 @@ Then, My EventBridge Module, I had a little challenge doing this, i will talk ab
 
 ## Issues Faced
 
-Firstly, one of the challenges I encountered during this lengthy process, while it was both exciting and engaging, was AWS Credentials. It is really important to keep your credentials safe and secure as well as ensuring you use the 
+Firstly, a key challenge was managing AWS credentials securely and ensuring they had the necessary permissions.
+
+It was also crucial to verify that the **aws_s3_bucket.my_bucket** resource was properly defined and that the bucket exists and ensuring that **${path.module}/images** contains the correct image files and that the path is valid.
+
+```
+- output "s3_object_urls" {
+-   value = [for obj_key, obj in aws_s3_object.object : obj.source]
+}
++ output "s3_object_urls" {
++   value = [for obj in aws_s3_object.image_objects : obj.source]
+}
+```
+The difference is that **.id** retrieves the unique identifiers of the S3 objects, while **obj.source** gets the source paths of the S3 objects.
+
+
+
 
 ## Terraform Configuration
 
@@ -111,4 +126,5 @@ Firstly, one of the challenges I encountered during this lengthy process, while 
 
 [EventBridge Module](https://github.com/Firdous2307/aws-rekognition-with-messi-or-ronaldo/tree/main/modules/eventbridge)
 
-[]
+
+[IAM Module](https://github.com/Firdous2307/aws-rekognition-with-messi-or-ronaldo/tree/main/modules/iam)
