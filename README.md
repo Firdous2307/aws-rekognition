@@ -1,6 +1,6 @@
 # rekognition
 
-##NEED TO FINISH THIS
+## NEED TO FINISH THIS
 
 
 draft planning
